@@ -74,10 +74,14 @@
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">Rp 11.500.000</span>
           <button class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">Beli Langsung</button>
+          <form action="{{ route('cart.add') }}" method="POST" class="inline-block">
+            @csrf
+           
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"> 
             {{-- <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
             </svg> --}}
+            
             <svg xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
                 viewBox="0 0 24 24" 
@@ -88,6 +92,7 @@
                     d="M2.25 2.25h1.386c.51 0 .955.343 1.07.835l.383 1.658M7.5 14.25h10.128c.928 0 1.676-.67 1.74-1.595l.62-9.04a1.125 1.125 0 00-1.12-1.206H4.11M7.5 14.25L6.39 4.743M7.5 14.25l-.533 3.2A1.875 1.875 0 008.812 19.5h6.876a1.875 1.875 0 001.845-1.307l.967-3.943M6 21a.75.75 0 110-1.5.75.75 0 010 1.5zm12 0a.75.75 0 110-1.5.75.75 0 010 1.5z" />
             </svg>
           </button>
+          </form>
         </div>
       </div>
     </div>
