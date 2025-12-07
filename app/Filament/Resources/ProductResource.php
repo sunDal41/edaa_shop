@@ -49,6 +49,11 @@ class ProductResource extends Resource
                     ->label('Stok')
                     ->numeric()
                     ->required(),
+
+                Forms\Components\Select::make('categories.id')
+                    ->relationship('categories','name')
+                    ->multiple()
+                    ->preload(),
                 
                 Forms\Components\SpatieMediaLibraryFileUpload::make('product_image')
                     ->image()
