@@ -7,8 +7,9 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function show(Product $product)
+    public function detail($id)
     {
-        return view('product.show', compact('product'));
+        $product = \App\Models\Product::find($id);
+        return view('product.detail', compact('product'));
     }
 }
