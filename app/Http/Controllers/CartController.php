@@ -26,6 +26,9 @@ class CartController extends Controller
      */
     public function add(Request $request)
     {
+        
+          
+        
         $request->validate([
             'product_id' => 'required|exists:products,id'
         ]);
@@ -33,31 +36,25 @@ class CartController extends Controller
         $product = Product::findOrFail($request->product_id);
         $cart = session()->get('cart', []);
 
-        // Check if product already in cart
-        $productExists = false;
         foreach ($cart as $item) {
             if ($item['product_id'] == $product->id) {
-                $productExists = true;
-                break;
+                return redirect()->back()->with('error', 'Produk sudah ada di keranjang!');
             }
         }
 
-        if ($productExists) {
-            return redirect()->back()->with('error', 'Produk sudah ada di keranjang!');
-        }
-
-        // Add new product to cart with quantity = 1
         $cart[] = [
-            'product_id' => $product->id,
+            'product_id'   => $product->id,
             'product_name' => $product->product_name,
-            'price' => $product->price,
-            'quantity' => 1,
-            'image' => $product->getFirstMediaUrl('products_image'),
+            'price'        => $product->price,
+            'quantity'     => 1,
+            'image'        => $product->getFirstMediaUrl('product_images'),
         ];
 
         session()->put('cart', $cart);
+
         return redirect()->route('cart.index')->with('success', 'Produk berhasil ditambahkan ke keranjang!');
     }
+
 
     /**
      * Update cart item quantity

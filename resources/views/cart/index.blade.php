@@ -24,7 +24,7 @@
                         <div class="divide-y divide-gray-200">
                             @foreach($cart as $item)
                                 <div class="p-6 flex flex-col md:flex-row items-center gap-4">
-                                    <img src="{{ $item['image'] ?: 'https://dummyimage.com/150x150' }}" 
+                                    <img src="{{ $item['image']}}" 
                                          alt="{{ $item['product_name'] }}" 
                                          class="w-24 h-24 object-cover rounded">
                                     

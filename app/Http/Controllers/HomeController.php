@@ -7,7 +7,16 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index ()
-    {
-        return view('home.index');
-    }
+   {
+    // Produk utama (hero)
+    $product = Product::first();
+
+    // Produk lain (kecuali produk utama)
+    $otherProducts = Product::where('id', '!=', $product->id)
+        ->latest()
+        ->take(3) // bebas mau berapa
+        ->get();
+
+    return view('home.index', compact('product', 'otherProducts'));
+   }
 }
